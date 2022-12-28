@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>uajax demo</title>
+    <style>
+        img {max-width: 100%}
+        .bi {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.125em;
+            fill: currentcolor;
+        }
+        body {overflow-y: scroll}
+    </style>
+    <script src="dark-theme-switcher.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-4">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check2" viewBox="0 0 16 16">
+            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+        </symbol>
+
+        <symbol id="circle-half" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
+        </symbol>
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+            <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+            <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+            <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </symbol>
+    </svg>
+
+    <div class="d-flex justify-content-between">
+        <h1>uajax demo</h1>
+
+        <div class="btn-group">
+            <button class="btn btn-light" data-bs-theme-value="light">
+                <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                Light
+                <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+            </button>
+            <button class="btn btn-light" data-bs-theme-value="dark">
+                <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                Dark
+                <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+            </button>
+            <button class="btn btn-light" data-bs-theme-value="auto">
+                <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                Auto
+                <svg class="bi ms-auto d-none"><use href="#check2"></use></svg>
+            </button>
+        </div>
+    </div>
+
+    <p>uajax - universal ajax library. demo is using bootstrap5, b5alert and b5toast but it is not required</p>
+
+
+    <div class="row">
+
+        <div class="col small">
+
+            <form method="post" action="https://uajaxdemo.auct.eu/response" class="js-uajax-form" data-callback="myFunc" data-target="#target">
+                <div class="mb-2">
+                    <label for="code" class="form-label">http code</label>
+                    <select id="code" name="code" class="form-select">
+                        <option value="200" selected>200</option>
+                        <option value="400">400</option>
+                        <option value="401">401</option>
+                        <option value="403">403</option>
+                        <option value="404">404</option>
+                        <option value="500">500</option>
+                    </select>
+                </div>
+
+                <div class="mb-2">
+                    <label for="type" class="form-label">response type</label>
+                    <select id="type" name="type" class="form-select">
+                        <option value="" selected>json</option>
+                        <option value="html">dummy html</option>
+                        <option value="html_cat">cat html</option>
+                    </select>
+                </div>
+
+
+                <div class="mb-2">
+                    <label for="note" class="form-label">Note Header (json|html)</label>
+                    <input name="note" type="text" class="form-control" id="note" aria-describedby="titleHelp">
+                </div>
+
+                <div class="mb-2">
+                    <label for="message" class="form-label">Success Message (json)</label>
+                    <input name="message" type="text" class="form-control" id="message" aria-describedby="titleHelp">
+                </div>
+
+                <div class="mb-2">
+                    <label for="error" class="form-label">Error message (json)</label>
+                    <input name="error" type="text" class="form-control" id="error" aria-describedby="titleHelp">
+                </div>
+
+
+                <div class="form-check mb-2">
+                    <input class="form-check-input" name="sleep" type="checkbox" value="1" id="sleep">
+                    <label class="form-check-label" for="sleep">
+                        Sleep 1 second
+                    </label>
+                </div>
+
+                <div class="form-check mb-2">
+                    <input class="form-check-input" name="redirect" type="checkbox" value="1" id="redirect">
+                    <label class="form-check-label" for="redirect">
+                        redirect (will respond json 200)
+                    </label>
+                </div>
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+            <p class="mt-3">
+                If you respond with html, you can change `uajax-note` text only with header.
+
+                <br><br>
+                For redirect respond with json e.g. {"redirect":"https:\/\/tech.auct.eu\/"}
+            </p>
+        </div>
+
+        <div class="col">
+            target div:
+            <div id="target" class="border"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="position-fixed bottom-0 start-0 p-3" id="toast-container"></div>
+
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!--This is for demo-->
+<script defer src="b5toast.js"></script>
+<script defer src="b5alert.js"></script>
+<script defer src="uajax.demo-notifications.js"></script>
+<!--End This is for demo-->
+<script defer src="uajax.settings.js"></script>
+<script defer src="../uajax.js"></script>
+
+<script>
+    function myFunc (jqxhr, form, message, exception) {
+        console.log('callback');
+        console.log(message);
+        console.log(form);
+    }
+</script>
+</body>
+</html>
