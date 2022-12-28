@@ -4,7 +4,7 @@ var uajax = {
     notificationMessageDefault: 'Request completed successfully',
     notificationMessageObject: 'message',
     notificationMessageHeader: 'uajax-note',
-    htmlOnError: false,
+    htmlOnError: true,
 
 
     success: function (jqxhr, form, notificationMessage, displayNotification) {
