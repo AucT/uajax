@@ -50,7 +50,7 @@
             }
             const spinnerHtml = form.getAttribute('data-spinner') || uajax.spinnerHtml;
             const buttonQuery = form.querySelector('[type="submit"],button:not([type="button"])');
-            const displayNotification = form.getAttribute('data-show-notification') === 'true' || (form.getAttribute('data-show-notification') !== 'false' && uajax.notificationMessageDisplay);
+            const displayNotification = form.getAttribute('data-show-notification') === '1' || (form.getAttribute('data-show-notification') !== '0' && uajax.notificationMessageDisplay);
             let buttonInnerHtml = '';
 
             if (buttonQuery != null) {

@@ -57,7 +57,7 @@ var uajax = {
 
 You can place options in html of the form. For example `<form data-reload="1" class="js-uajax-form">`
 ```
-data-show-notification="false" - don't show notification on success (override global setting)
+data-show-notification="0" - don't show notification on success (override global setting)
 data-show-notification="1" - show notification on success (overrides global setting)
 data-spinner="loading..." - spinner html (overrides global setting)
 
