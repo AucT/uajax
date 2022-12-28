@@ -4,7 +4,7 @@ var uajax = {
     notificationMessageDefault: 'Request completed successfully',
     notificationMessageObject: 'message', //on success if json response have message field it will use it instead of notificationMessageDefault
     notificationMessageHeader: 'uajax-note',
-    htmlOnError: false, //if response is error and you are using target to replace html
+    htmlOnError: false, //if true and response is html, will replace data-target with html even on error
 
 
     success: function (jqxhr, form, notificationMessage, displayNotification) {
