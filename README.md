@@ -3,6 +3,11 @@ uajax is universal ajax function (javascript) to make your forms ajax. Uses form
 
 This can be useful for people that use server-side generation and don't like to touch javascript, but needs their forms to be ajaxed.
 
+
+## Demo
+[Demo](https://auct.github.io/uajax/demo)
+
+
 ## Requirements
 
 Add uajax script anywhere you want. It has no dependencies. If you use custom notification place uajax after notification.
@@ -10,10 +15,6 @@ Add uajax script anywhere you want. It has no dependencies. If you use custom no
 <script defer src="/uajax.settings.js"></script>
 <script defer src="/uajax.js"></script>
 ```
-
-## Demo
-[Demo](https://auct.github.io/uajax/demo)
-
 
 ## Usage
 
@@ -28,7 +29,7 @@ var uajax = {
     notificationMessageDefault: 'Request completed successfully',
     notificationMessageObject: 'message', //on success if json response have message field it will use it instead of notificationMessageDefault
     notificationMessageHeader: 'uajax-note',
-    htmlOnError: false, //if response is error and you are using target to replace html
+    htmlOnError: true, //if true and response is html, will insert into data-target html response even on error
 
 
     success: function (jqxhr, form, notificationMessage, displayNotification) {
