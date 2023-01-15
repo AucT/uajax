@@ -13,6 +13,8 @@ var uajax = {
         if (displayNotification) {
             alert('success!' + '\n' + notificationMessage);
         }
+        // Uncomment next line if you are adding new js-uajax-form dynamically
+        // if (form.hasAttribute('data-target')) uajax.uajaxAll();
     },
     error: function (jqxhr, form, exception) {
         alert('error!' + '\n' + 'status: '+jqxhr.status + '\n' + 'exception: ' + exception);
