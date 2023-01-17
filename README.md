@@ -40,9 +40,6 @@ var uajax = {
         if (displayNotification) {
             alert('success!' + '\n' + notificationMessage);
         }
-
-        // Uncomment next line if you are adding new js-uajax-form dynamically
-        // if (form.hasAttribute('data-target')) uajax.uajaxAll();
     },
     error: function (jqxhr, form, exception) {
         //Change this for your error notification. See demo for bootstrap 5 and custom messages
