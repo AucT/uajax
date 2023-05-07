@@ -32,7 +32,7 @@ var uajax = {
     htmlOnError: true, //if true and response is html, will insert into data-target html response even on error
 
 
-    success: function (jqxhr, form, notificationMessage, displayNotification) {
+    success: function (xhr, form, notificationMessage, displayNotification) {
         // Uncomment next line if you don't want message yourself when using html target
         // if (form.hasAttribute('data-target')) return;
 
@@ -41,11 +41,11 @@ var uajax = {
             alert('success!' + '\n' + notificationMessage);
         }
     },
-    error: function (jqxhr, form, exception) {
+    error: function (xhr, form, exception) {
         //Change this for your error notification. See demo for bootstrap 5 and custom messages
-        alert('error!' + '\n' + 'status: '+jqxhr.status + '\n' + 'exception: ' + exception);
+        alert('error!' + '\n' + 'status: '+xhr.status + '\n' + 'exception: ' + exception);
     },
-    complete: function (jqxhr, form, notificationMessage, displayNotification, exception) {
+    complete: function (xhr, form, notificationMessage, displayNotification, exception) {
         //if error you will have exception but notificationMessage and displayNotification will be null
         //if success you will have notificationMessage and displayNotification  but exception will be null
         console.log('completed');
@@ -73,7 +73,7 @@ data-autohide="1" - autohide form after success
 //special data-target works only for html responses
 data-target=".target" - querySelector where to place html response after both success and error
 
-//callback function example: function myFunc (jqxhr, form, message, exception)
+//callback function example: function myFunc (xhr, form, message, exception)
 data-callback="myFunc" - callback function after success or error
 data-callback-success="myFunc" - callback function after success
 data-callback-error="myFunc" - callback function after error

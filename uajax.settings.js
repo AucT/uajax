@@ -7,17 +7,17 @@ var uajax = {
     htmlOnError: true, //if true and response is html, will insert into data-target html response even on error
 
 
-    success: function (jqxhr, form, notificationMessage, displayNotification) {
+    success: function (xhr, form, notificationMessage, displayNotification) {
         // Uncomment next line if you don't want message yourself when using html target
         // if (form.hasAttribute('data-target')) return;
         if (displayNotification) {
             alert('success!' + '\n' + notificationMessage);
         }
     },
-    error: function (jqxhr, form, exception) {
-        alert('error!' + '\n' + 'status: '+jqxhr.status + '\n' + 'exception: ' + exception);
+    error: function (xhr, form, exception) {
+        alert('error!' + '\n' + 'status: '+xhr.status + '\n' + 'exception: ' + exception);
     },
-    complete: function (jqxhr, form, notificationMessage, displayNotification, exception) {
+    complete: function (xhr, form, notificationMessage, displayNotification, exception) {
         console.log('completed');
     },
 };

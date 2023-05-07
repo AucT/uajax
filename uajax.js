@@ -65,7 +65,7 @@
         buttonPrepare(buttonQuery, spinnerHtml);
 
         uajax.ajax(form.action, form.method, e.formData,
-            function (data, jqxhr) {
+            function (data, xhr) {
                 buttonReset(buttonQuery, buttonInnerHtml);
                 if (form.getAttribute('data-reload')) {
                     document.location.reload();
@@ -86,7 +86,7 @@
                     });
                 }
 
-                const contentType = jqxhr.getResponseHeader('content-type');
+                const contentType = xhr.getResponseHeader('content-type');
                 let notificationMessage = uajax.notificationMessageDefault;
 
                 if (contentType && contentType.indexOf('application/json') !== -1) {
@@ -103,7 +103,7 @@
                     }
                 }
 
-                const notificationMessageFromHeader = jqxhr.getResponseHeader(uajax.notificationMessageHeader);
+                const notificationMessageFromHeader = xhr.getResponseHeader(uajax.notificationMessageHeader);
                 if (notificationMessageFromHeader) {
                     notificationMessage = notificationMessageFromHeader;
                 }
@@ -115,29 +115,29 @@
                 if (form.getAttribute('data-autohide')) {
                     form.hidden = true;
                 }
-                uajax.success(jqxhr, form, notificationMessage, displayNotification);
-                uajax.complete(jqxhr, form, notificationMessage, displayNotification, null);
+                uajax.success(xhr, form, notificationMessage, displayNotification);
+                uajax.complete(xhr, form, notificationMessage, displayNotification, null);
 
                 if (form.getAttribute('data-callback-success')) {
-                    window[form.getAttribute('data-callback-success')](jqxhr, form, notificationMessage);
+                    window[form.getAttribute('data-callback-success')](xhr, form, notificationMessage);
                 }
                 if (form.getAttribute('data-callback')) {
-                    window[form.getAttribute('data-callback')](jqxhr, form, notificationMessage);
+                    window[form.getAttribute('data-callback')](xhr, form, notificationMessage);
                 }
 
             },
-            function (jqxhr, exception) {
+            function (xhr, exception) {
                 buttonReset(buttonQuery, buttonInnerHtml);
-                uajax.error(jqxhr, form, exception);
-                uajax.complete(jqxhr, form, null, null, exception);
-                if (uajax.htmlOnError && form.getAttribute('data-target') && jqxhr.getResponseHeader('content-type') && jqxhr.getResponseHeader('content-type').indexOf('application/json') === -1) {
-                    document.querySelector(form.getAttribute('data-target')).innerHTML = jqxhr.responseText;
+                uajax.error(xhr, form, exception);
+                uajax.complete(xhr, form, null, null, exception);
+                if (uajax.htmlOnError && form.getAttribute('data-target') && xhr.getResponseHeader('content-type') && xhr.getResponseHeader('content-type').indexOf('application/json') === -1) {
+                    document.querySelector(form.getAttribute('data-target')).innerHTML = xhr.responseText;
                 }
                 if (form.getAttribute('data-callback-error')) {
-                    window[form.getAttribute('data-callback-error')](jqxhr, form, null, exception);
+                    window[form.getAttribute('data-callback-error')](xhr, form, null, exception);
                 }
                 if (form.getAttribute('data-callback')) {
-                    window[form.getAttribute('data-callback')](jqxhr, form, null, exception);
+                    window[form.getAttribute('data-callback')](xhr, form, null, exception);
                 }
             });
     }, false);

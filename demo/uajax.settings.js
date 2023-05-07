@@ -7,7 +7,7 @@ var uajax = {
     htmlOnError: true,
 
 
-    success: function (jqxhr, form, notificationMessage, displayNotification) {
+    success: function (xhr, form, notificationMessage, displayNotification) {
         // Uncomment next line if you don't want message yourself when using html target
         // if (form.hasAttribute('data-target')) return;
 
@@ -15,10 +15,10 @@ var uajax = {
             demoNotification.success(form, notificationMessage)
         }
     },
-    error: function (jqxhr, form, exception) {
-        demoNotification.error(jqxhr, exception, form)
+    error: function (xhr, form, exception) {
+        demoNotification.error(xhr, exception, form)
     },
-    complete: function (jqxhr, form, notificationMessage, displayNotification, exception) {
+    complete: function (xhr, form, notificationMessage, displayNotification, exception) {
         console.log('completed');
     },
 };

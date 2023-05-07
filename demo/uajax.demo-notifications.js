@@ -3,12 +3,12 @@ demoNotification.success = function (form, message, title) {
     b5toast.success(message, title);
 };
 
-demoNotification.error = function (jqxhr, exception, form) {
+demoNotification.error = function (xhr, exception, form) {
 
     //check if json and try to get error message
-    const contentType = jqxhr.getResponseHeader('content-type');
+    const contentType = xhr.getResponseHeader('content-type');
     if (contentType && contentType.indexOf('application/json') !== -1) {
-        const obj = JSON.parse(jqxhr.responseText);
+        const obj = JSON.parse(xhr.responseText);
         //checking json {error:'my custom error xD'}
         if (obj.error) {
             b5alert.error(form, obj.error, 'Error');
@@ -27,20 +27,20 @@ demoNotification.error = function (jqxhr, exception, form) {
         }
     }
 
-    if (jqxhr.status === 0) {
+    if (xhr.status === 0) {
         b5alert.error(form, 'Not connect.\n Verify Network.', 'Server error');
-    } else if (jqxhr.status === 404) {
+    } else if (xhr.status === 404) {
         b5alert.error(form, 'The server cannot find the requested resource', '404 Not Found');
-    } else if (jqxhr.status === 401) {
+    } else if (xhr.status === 401) {
         //window.location.assign('/login');
         b5alert.error(form, '401 Unauthorized');
-    } else if (jqxhr.status === 403) {
+    } else if (xhr.status === 403) {
         b5alert.error(form, '403 Forbidden');
-    } else if (jqxhr.status === 400) {
+    } else if (xhr.status === 400) {
         b5alert.error(form, 'Bad Request');
-    }  else if (jqxhr.status === 422) {
+    }  else if (xhr.status === 422) {
         b5alert.error(form, 'Bad Request');
-    }  else if (jqxhr.status === 500) {
+    }  else if (xhr.status === 500) {
         b5alert.error(form, '500 Server error');
     } else if (exception === 'parsererror') {
         b5alert.error(form, 'Requested JSON parse failed');
