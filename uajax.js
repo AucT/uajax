@@ -101,6 +101,11 @@
                     if (form.getAttribute('data-target')) {
                         document.querySelector(form.getAttribute('data-target')).innerHTML = data;
                     }
+                    if (form.getAttribute('data-target-append')) {
+                        const template = document.createElement("template");
+                        template.innerHTML = data.trim();
+                        document.querySelector(form.getAttribute('data-target-append')).append(template.content.firstChild);
+                    }
                 }
 
                 const notificationMessageFromHeader = xhr.getResponseHeader(uajax.notificationMessageHeader);

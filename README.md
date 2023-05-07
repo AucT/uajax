@@ -72,6 +72,7 @@ data-autohide="1" - autohide form after success
 
 //special data-target works only for html responses
 data-target=".target" - querySelector where to place html response after both success and error
+data-target-append=".target" - querySelector where to add html response after both success and error
 
 //callback function example: function myFunc (xhr, form, message, exception)
 data-callback="myFunc" - callback function after success or error
