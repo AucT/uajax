@@ -26,29 +26,49 @@ demoNotification.error = function (xhr, exception, form) {
             return;
         }
     }
+    b5alert.error(form, demoNotification.getErrorMessage(xhr, exception));
+};
+
+demoNotification.getErrorMessage = function (xhr, exception) {
+    const contentType = xhr.getResponseHeader('content-type');
+    if (contentType && contentType.indexOf('application/json') !== -1) {
+        const obj = JSON.parse(xhr.responseText);
+        if (obj.error) {
+            return 'Помилка<br>'+obj.error;
+        }
+        if (obj.errors) {
+            let message ='<ul>';
+            const keys = Object.keys(obj.errors);
+            for (let i = 0; i < keys.length; i++) {
+                message += '<li>'+obj.errors[keys[i]]+'</li>';
+            }
+            message += '</ul>'
+            return 'Помилковий запит<br>' + message;
+        }
+    }
 
     if (xhr.status === 0) {
-        b5alert.error(form, 'Not connect.\n Verify Network.', 'Server error');
-    } else if (xhr.status === 404) {
-        b5alert.error(form, 'The server cannot find the requested resource', '404 Not Found');
-    } else if (xhr.status === 401) {
-        //window.location.assign('/login');
-        b5alert.error(form, '401 Unauthorized');
-    } else if (xhr.status === 403) {
-        b5alert.error(form, '403 Forbidden');
+        return 'Server error<br>Not connected. Verify Network.';
     } else if (xhr.status === 400) {
-        b5alert.error(form, 'Bad Request');
-    }  else if (xhr.status === 422) {
-        b5alert.error(form, 'Bad Request');
-    }  else if (xhr.status === 500) {
-        b5alert.error(form, '500 Server error');
+        return 'Bad Request';
+    } else if (xhr.status === 401) {
+        window.location.assign('/login');
+        return '401 Unauthorized';
+    } else if (xhr.status === 403) {
+        return '403 Forbidden';
+    } else if (xhr.status === 404) {
+        return '404 Not Found<br>The server cannot find the requested resource';
+    } else if (jqxhr.status === 405) {
+        return ' 405 Method Not Allowed ';
+    } else if (xhr.status === 422) {
+        return 'Bad Request';
     } else if (exception === 'parsererror') {
-        b5alert.error(form, 'Requested JSON parse failed');
+        return 'Requested JSON parse failed';
     } else if (exception === 'timeout') {
-        b5alert.error(form, 'Time out error');
+        return 'Time out error';
     } else if (exception === 'abort') {
-        b5alert.error(form, 'Ajax request aborted');
+        return 'Ajax request aborted';
     } else {
-        b5alert.error(form, 'Unknown error!');
+        return 'Unknown error!';
     }
-};
+}
