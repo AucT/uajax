@@ -5,7 +5,8 @@ This can be useful for people that use server-side generation and don't like to 
 
 
 ## Demo
-[Demo](https://auct.github.io/uajax/demo)
+[Demo Requests](https://auct.github.io/uajax/demo)  
+[Demo Todo App](https://auct.github.io/uajax/demo/todo.html)
 
 
 ## Requirements
