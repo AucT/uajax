@@ -34,7 +34,7 @@ demoNotification.getErrorMessage = function (xhr, exception) {
     if (contentType && contentType.indexOf('application/json') !== -1) {
         const obj = JSON.parse(xhr.responseText);
         if (obj.error) {
-            return 'Помилка<br>'+obj.error;
+            return 'Error<br>'+obj.error;
         }
         if (obj.errors) {
             let message ='<ul>';
@@ -43,7 +43,7 @@ demoNotification.getErrorMessage = function (xhr, exception) {
                 message += '<li>'+obj.errors[keys[i]]+'</li>';
             }
             message += '</ul>'
-            return 'Помилковий запит<br>' + message;
+            return 'Error request<br>' + message;
         }
     }
 
@@ -58,7 +58,7 @@ demoNotification.getErrorMessage = function (xhr, exception) {
         return '403 Forbidden';
     } else if (xhr.status === 404) {
         return '404 Not Found<br>The server cannot find the requested resource';
-    } else if (jqxhr.status === 405) {
+    } else if (xhr.status === 405) {
         return ' 405 Method Not Allowed ';
     } else if (xhr.status === 422) {
         return 'Bad Request';
