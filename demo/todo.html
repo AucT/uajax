@@ -177,10 +177,10 @@
         console.log(form);
     }
 
-    document.querySelectorAll('.js-onchange-submit').forEach(function(form) {
-        form.addEventListener('change', function(e) {
+    document.addEventListener('change', function(e) {
+        if (e.target.classList.contains('js-onchange-submit')) {
             e.target.closest('form').requestSubmit();
-        });
+        }
     });
 
     //this is for demo. To get right id
