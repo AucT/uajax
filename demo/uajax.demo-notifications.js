@@ -8,22 +8,26 @@ demoNotification.error = function (xhr, exception, form) {
     //check if json and try to get error message
     const contentType = xhr.getResponseHeader('content-type');
     if (contentType && contentType.indexOf('application/json') !== -1) {
-        const obj = JSON.parse(xhr.responseText);
-        //checking json {error:'my custom error xD'}
-        if (obj.error) {
-            b5alert.error(form, obj.error, 'Error');
-            return;
-        }
-        //this is for default laravel error ajax response. It has errors array with error strings
-        if (obj.errors) {
-            let message ='<ul>';
-            const keys = Object.keys(obj.errors);
-            for (let i = 0; i < keys.length; i++) {
-                message += '<li>'+obj.errors[keys[i]]+'</li>';
+        try {
+            const obj = JSON.parse(xhr.responseText);
+            //checking json {error:'my custom error xD'}
+            if (obj.error) {
+                b5alert.error(form, obj.error, 'Error');
+                return;
             }
-            message += '</ul>'
-            b5alert.error(form, message, 'Error');
-            return;
+            //this is for default laravel error ajax response. It has errors array with error strings
+            if (obj.errors) {
+                let message = '<ul>';
+                const keys = Object.keys(obj.errors);
+                for (let i = 0; i < keys.length; i++) {
+                    message += '<li>' + obj.errors[keys[i]] + '</li>';
+                }
+                message += '</ul>'
+                b5alert.error(form, message, 'Error');
+                return;
+            }
+        } catch (error) {
+            b5alert.error(form, 'Error parsing JSON: Please contact webmaster', xhr.responseText);
         }
     }
     b5alert.error(form, demoNotification.getErrorMessage(xhr, exception));
@@ -32,6 +36,7 @@ demoNotification.error = function (xhr, exception, form) {
 demoNotification.getErrorMessage = function (xhr, exception) {
     const contentType = xhr.getResponseHeader('content-type');
     if (contentType && contentType.indexOf('application/json') !== -1) {
+        try {
         const obj = JSON.parse(xhr.responseText);
         if (obj.error) {
             return 'Error<br>'+obj.error;
@@ -44,6 +49,9 @@ demoNotification.getErrorMessage = function (xhr, exception) {
             }
             message += '</ul>'
             return 'Error request<br>' + message;
+        }
+        } catch (error) {
+            return (xhr.responseText + '<br>Error parsing JSON: Please contact webmaster');
         }
     }
 
