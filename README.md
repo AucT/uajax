@@ -70,6 +70,7 @@ data-redirect-replace="/success" - after success open url
 data-toggle-hidden=".target" - querySelector for elements which will toggle visibility after success
 data-remove-target=".target" - querySelector for elements to remove after success
 data-autohide="1" - autohide form after success
+data-reset-form - autoreset from after success
 
 //special data-target works only for html responses
 data-target=".target" - querySelector where to place html response after both success and error

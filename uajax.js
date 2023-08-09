@@ -113,12 +113,14 @@
                     notificationMessage = notificationMessageFromHeader;
                 }
 
-
-                if (form.getAttribute('data-remove-target')) {
-                    document.querySelector(form.getAttribute('data-remove-target')).remove();
+                if (form.getAttribute('data-reset-form')) {
+                    form.reset()
                 }
                 if (form.getAttribute('data-autohide')) {
                     form.hidden = true;
+                }
+                if (form.getAttribute('data-remove-target')) {
+                    document.querySelector(form.getAttribute('data-remove-target')).remove();
                 }
                 uajax.success(xhr, form, notificationMessage, displayNotification);
                 uajax.complete(xhr, form, notificationMessage, displayNotification, null);
