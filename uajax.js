@@ -90,12 +90,16 @@
                 let notificationMessage = uajax.notificationMessageDefault;
 
                 if (contentType && contentType.indexOf('application/json') !== -1) {
-                    const obj = JSON.parse(data);
-                    if (obj.redirect) {
-                        window.location.assign(obj.redirect);
-                    }
-                    if (obj[uajax.notificationMessageObject]) {
-                        notificationMessage = obj[uajax.notificationMessageObject];
+                    try {
+                        const obj = JSON.parse(data);
+                        if (obj.redirect) {
+                            window.location.assign(obj.redirect);
+                        }
+                        if (obj[uajax.notificationMessageObject]) {
+                            notificationMessage = obj[uajax.notificationMessageObject];
+                        }
+                    } catch (error) {
+                        notificationMessage = data+uajax.jsonParseErrorSuffix;
                     }
                 } else {
                     if (form.getAttribute('data-target')) {

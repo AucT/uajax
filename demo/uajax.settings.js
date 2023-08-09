@@ -5,6 +5,7 @@ var uajax = {
     notificationMessageObject: 'message',
     notificationMessageHeader: 'uajax-note',
     htmlOnError: true,
+    jsonParseErrorSuffix: '<br>Error parsing JSON: Please contact webmaster',
 
 
     success: function (xhr, form, notificationMessage, displayNotification) {
