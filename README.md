@@ -89,7 +89,9 @@ data-callback-error="myFunc" - callback function after error
 {"message":"successfully build reactjs alternative"} //will use this notification message instead of default. `message` field can be changed in settings
 
 //headers
-uajax-note: successfully build javascript alternative  //if your response has `uajax-note` header, it's value will be used as message. Header name can be changed in settings
+//If your response has `uajax-note` header, it's value will be used as message. Header name can be changed in settings.
+//For using header message in other language, encode it's value like this in php `header('uajax-note: '. rawurlencode('Привіт! Ми з України!'));`
+uajax-note: successfully build javascript alternative 
 ```
 
 
