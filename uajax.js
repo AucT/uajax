@@ -114,7 +114,7 @@
 
                 const notificationMessageFromHeader = xhr.getResponseHeader(uajax.notificationMessageHeader);
                 if (notificationMessageFromHeader) {
-                    notificationMessage = notificationMessageFromHeader;
+                    notificationMessage = decodeURIComponent(notificationMessageFromHeader);
                 }
 
                 if (form.getAttribute('data-reset-form')) {
